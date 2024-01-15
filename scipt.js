@@ -39,6 +39,7 @@ function addtoCart(prodId){
         value.Quantity+=1;
         newfun(prodId);
     }
+    updtCountAndCart()
    
 }
 
@@ -52,6 +53,7 @@ function removetoCart(prodId){
         }
         
     }
+    updtCountAndCart()
 }
 
 
@@ -66,13 +68,14 @@ function newfun(prodId){
 
 
 function updtCountAndCart(){
-    if(count>0){
-        let card = document.createElement("div");
-        card.innerHTML=`
-        <p class = "product_name">${prod.name}</p>
-        <p class = "product_price">${prod.price}</p>
-        <p class = "product_count">${count}</p>`
-        card.classList.add("card_cont");
-        cart_card.appendChild(card);
-    }
+    cart_card.innerHTML = "";
+        productList.forEach((prod)=>{
+            if(prod.Quantity>0){
+            let card = document.createElement("div");
+            card.innerHTML=` 
+            ${prod.name} ${prod.price} x ${prod.Quantity}`
+            card.classList.add("card_cont");
+            cart_card.appendChild(card);
+        }
+    })
 }
