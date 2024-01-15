@@ -68,6 +68,8 @@ function newfun(prodId){
 
 
 function updtCountAndCart(){
+
+     let total =0;
     cart_card.innerHTML = "";
         productList.forEach((prod)=>{
             if(prod.Quantity>0){
@@ -76,6 +78,14 @@ function updtCountAndCart(){
             ${prod.name} ${prod.price} x ${prod.Quantity}`
             card.classList.add("card_cont");
             cart_card.appendChild(card);
+            const price = prod.price * prod.Quantity;
+             total += price;
+             totalPrice.innerHTML = `${total}`;
+             
         }
+
+        
+        
+        
     })
 }
