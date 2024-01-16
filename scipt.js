@@ -52,6 +52,7 @@ function removetoCart(prodId){
             newfun(prodId);
         }
         
+        
     }
     updtCountAndCart()
 }
@@ -73,11 +74,18 @@ function updtCountAndCart(){
     cart_card.innerHTML = "";
         productList.forEach((prod)=>{
             if(prod.Quantity>0){
+                let Cardss = document.createElement("div");
+                Cardss.classList.add("main_class");
+
             let card = document.createElement("div");
-            card.innerHTML=` 
-            ${prod.name} ${prod.price} x ${prod.Quantity}`
+            card.innerHTML=` ${prod.name} `
             card.classList.add("card_cont");
-            cart_card.appendChild(card);
+            let money = document.createElement("div");
+            money.innerHTML =`${prod.price} x ${prod.Quantity}`
+            money.classList.add("money_sec");       
+            Cardss.appendChild(card);
+            Cardss.appendChild(money);
+            cart_card.appendChild(Cardss);
             const price = prod.price * prod.Quantity;
              total += price;
              totalPrice.innerHTML = `${total}`;
